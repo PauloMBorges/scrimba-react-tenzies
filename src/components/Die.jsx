@@ -1,9 +1,12 @@
 function Die(props) {
-    return (
-        <div className="die-el">
-            <h2 className="die-num">{props.value}</h2>
-        </div>
-    )
+  const styles = {
+    backgroundColor: props.isHeld ? "#59E391" : "white",
+  };
+  return (
+    <div className="die-el" style={styles}>
+      <h2 className="die-num">{props.value}</h2>
+    </div>
+  );
 }
 
-export default Die
+export default Die;
