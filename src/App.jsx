@@ -1,9 +1,19 @@
 import Die from "./components/Die";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 
 function App() {
   const [dice, setDice] = useState(allNewDice());
+  const [tenzies, setTenzies] = useState(false)
+
+  useEffect(() => {
+    const allHeld = dice.every(die => die.isHeld)
+    const firstValue = dice[0].value
+    const allSameValue = dice.every(die => die.value === firstValue)
+    if(allHeld && allSameValue) {
+      setTenzies(true)
+    }
+  })
 
   function generateNewDie() {
     return {
