@@ -1,6 +1,7 @@
 import Die from "./components/Die";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
+import Confetti from "react-confetti";
 
 function App() {
   const [dice, setDice] = useState(allNewDice());
@@ -58,7 +59,7 @@ function App() {
 
   return (
     <main>
-      
+      {tenzies && < Confetti />}
       <h1 className="title">Tenzies</h1>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
