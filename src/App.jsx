@@ -13,7 +13,7 @@ function App() {
     if(allHeld && allSameValue) {
       setTenzies(true)
     }
-  })
+  }, [dice])
 
   function generateNewDie() {
     return {
@@ -58,6 +58,7 @@ function App() {
 
   return (
     <main>
+      
       <h1 className="title">Tenzies</h1>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
@@ -65,7 +66,7 @@ function App() {
       </p>
       <div className="dice-container">{diceElements}</div>
       <button className="roll-dice" onClick={rollDice}>
-        Roll
+        {tenzies ? 'New Game' : 'Roll'}
       </button>
     </main>
   );
