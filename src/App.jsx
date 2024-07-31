@@ -2,10 +2,12 @@ import Die from "./components/Die";
 import { useState, useEffect } from "react";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
+import Count from "./components/Count";
 
 function App() {
   const [dice, setDice] = useState(allNewDice());
   const [tenzies, setTenzies] = useState(false);
+  const [rollCount, setRollCount] = useState(0)
 
   useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
@@ -38,6 +40,7 @@ function App() {
         return die.isHeld ? die : generateNewDie();
       })
     );
+    setRollCount((prevCount) => prevCount + 1)
   }
 
   function holdDice(id) {
@@ -51,6 +54,7 @@ function App() {
   function newGame() {
     setTenzies(false);
     setDice(allNewDice());
+    setRollCount(0)
   }
 
   const diceElements = dice.map((die) => (
@@ -74,6 +78,7 @@ function App() {
       <button className="roll-dice" onClick={tenzies ? newGame : rollDice}>
         {tenzies ? "New Game" : "Roll"}
       </button>
+      < Count rollCount={rollCount}/>
     </main>
   );
 }
