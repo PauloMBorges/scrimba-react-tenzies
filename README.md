@@ -1,8 +1,19 @@
-# React + Vite
+# Scrimba React Tenzies Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a tenzies game built as part of the [Scrimba's Learn React course](https://v2.scrimba.com/learn-react-c0e). 
+The objective of the game is to roll dice until all dice show the same number. Players can freeze dice at their current value
+by clicking on them. The game keeps track of the number of rolls and saves the best score on the local storage.
 
-Currently, two official plugins are available:
+![Meme Generator Screenshot](/src/assets/tenzies-screenshot.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This was the capstone project of the course, and it worked as a review of all the concepts learned throughout the course.
+
+## Technologies Used
+
+- React
+- HTML
+- CSS
+
+## Website Link
+
+Visit the live website [here](https://paulomborges.github.io/scrimba-react-tenzies).
