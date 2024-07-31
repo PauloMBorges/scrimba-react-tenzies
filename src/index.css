@@ -73,3 +73,14 @@ main {
   margin-top: 0;
   text-align: center;
 }
+
+.count {
+  display: flex;
+  align-items: center;
+  gap: .35em;
+}
+
+.count-value {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
