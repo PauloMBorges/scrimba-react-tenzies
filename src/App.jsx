@@ -7,7 +7,10 @@ import Count from "./components/Count";
 function App() {
   const [dice, setDice] = useState(allNewDice());
   const [tenzies, setTenzies] = useState(false);
-  const [rollCount, setRollCount] = useState(0)
+  const [rollCount, setRollCount] = useState(0);
+  const [bestRolls, setBestRolls] = useState(
+    JSON.parse(localStorage.getItem("bestRolls")) || null
+  );
 
   useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
@@ -15,6 +18,10 @@ function App() {
     const allSameValue = dice.every((die) => die.value === firstValue);
     if (allHeld && allSameValue) {
       setTenzies(true);
+      if (!bestRolls || rollCount < bestRolls) {
+        setBestRolls(rollCount);
+        localStorage.setItem("bestRolls", JSON.stringify(rollCount));
+      }
     }
   }, [dice]);
 
@@ -40,7 +47,7 @@ function App() {
         return die.isHeld ? die : generateNewDie();
       })
     );
-    setRollCount((prevCount) => prevCount + 1)
+    setRollCount((prevCount) => prevCount + 1);
   }
 
   function holdDice(id) {
@@ -54,7 +61,7 @@ function App() {
   function newGame() {
     setTenzies(false);
     setDice(allNewDice());
-    setRollCount(0)
+    setRollCount(0);
   }
 
   const diceElements = dice.map((die) => (
@@ -78,7 +85,7 @@ function App() {
       <button className="roll-dice" onClick={tenzies ? newGame : rollDice}>
         {tenzies ? "New Game" : "Roll"}
       </button>
-      < Count rollCount={rollCount}/>
+      <Count rollCount={rollCount} bestRolls={bestRolls} />
     </main>
   );
 }
